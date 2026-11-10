@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - R&S Watch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-layout">
+  <div class="auth-visual">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:200px;filter:drop-shadow(0 20px 50px rgba(201,163,78,0.4));">
+      <defs>
+        <radialGradient id="authWatchFace" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2A2A2A"/>
+          <stop offset="100%" stop-color="#0D0D0D"/>
+        </radialGradient>
+        <linearGradient id="authGoldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E5C97B"/>
+          <stop offset="50%" stop-color="#C9A34E"/>
+          <stop offset="100%" stop-color="#8B6F2E"/>
+        </linearGradient>
+      </defs>
+      <rect x="42" y="0" width="16" height="18" fill="#1A1A1A" rx="2"/>
+      <rect x="42" y="82" width="16" height="18" fill="#1A1A1A" rx="2"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="url(#authGoldShine)" stroke-width="3"/>
+      <circle cx="50" cy="50" r="38" fill="url(#authWatchFace)" stroke="#C9A34E" stroke-width="1"/>
+      <g stroke="#C9A34E" stroke-width="1.5" stroke-linecap="round">
+        <line x1="50" y1="16" x2="50" y2="22"/>
+        <line x1="50" y1="78" x2="50" y2="84"/>
+        <line x1="16" y1="50" x2="22" y2="50"/>
+        <line x1="78" y1="50" x2="84" y2="50"/>
+        <line x1="26" y1="26" x2="30" y2="30"/>
+        <line x1="70" y1="30" x2="74" y2="26"/>
+        <line x1="26" y1="74" x2="30" y2="70"/>
+        <line x1="70" y1="70" x2="74" y2="74"/>
+      </g>
+      <line x1="50" y1="50" x2="50" y2="26" stroke="#E5C97B" stroke-width="3" stroke-linecap="round"/>
+      <line x1="50" y1="50" x2="70" y2="58" stroke="#E5C97B" stroke-width="2" stroke-linecap="round"/>
+      <line x1="50" y1="50" x2="36" y2="62" stroke="#C9A34E" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="3.5" fill="url(#authGoldShine)"/>
+      <circle cx="50" cy="50" r="1.5" fill="#0D0D0D"/>
+      <rect x="62" y="46" width="8" height="7" fill="#0D0D0D" stroke="#C9A34E" stroke-width="0.5" rx="1"/>
+      <text x="66" y="51.5" font-size="3.5" fill="#E5C97B" text-anchor="middle" font-family="Inter">15</text>
+    </svg>
+  </div>
+
+  <div class="auth-form-panel">
+    <div class="auth-form">
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+        <button type="button" class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <!-- ============ LOGIN FORM ============ -->
+      <div id="loginForm">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in to your R&S account</p>
+        <form onsubmit="loginUser(event)">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="logEmail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="logPass" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:13px;">
+            <a href="#" onclick="document.getElementById('forgotForm').classList.remove('hidden');document.getElementById('loginForm').classList.add('hidden');return false;">Forgot password?</a>
+            <a href="#" onclick="switchAuthTab('register');return false;">Create account</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- ============ REGISTER FORM (2-COLUMN) ============ -->
+      <div id="registerForm" class="hidden">
+        <h2>Create Account</h2>
+        <p class="subtitle">Join R&S Watch today</p>
+        <form onsubmit="registerUser(event)">
+          <!-- Row 1: Name + Email -->
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="regName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="regEmail" class="form-control" required>
+            </div>
+          </div>
+
+          <!-- Row 2: Password + Confirm -->
+          <div class="form-row">
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="regPass" class="form-control" required minlength="6">
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" id="regPassConfirm" class="form-control" required>
+            </div>
+          </div>
+
+          <!-- Row 3: Phone + Address -->
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="text" id="regPhone" class="form-control" placeholder="09123456789" required>
+            </div>
+            <div class="form-group">
+              <label>Shipping Address</label>
+              <input type="text" id="regAddress" class="form-control" placeholder="123 Main St" required>
+            </div>
+          </div>
+
+          <!-- Terms checkbox -->
+          <div class="form-group" style="margin-bottom:14px;">
+            <label style="font-size:13px;"><input type="checkbox" required> I agree to Terms & Privacy Policy</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+          <p class="text-center mt-2" style="font-size:13px;color:var(--medium-gray);">Already have an account? <a href="#" onclick="switchAuthTab('login');return false;">Login</a>.</p>
+        </form>
+      </div>
+
+      <!-- ============ FORGOT PASSWORD ============ -->
+      <div id="forgotForm" class="hidden">
+        <h2>Reset Password</h2>
+        <p class="subtitle">Enter your email and we'll send a reset link.</p>
+        <form onsubmit="event.preventDefault(); showToast('Demo only: No actual email will be sent.', 'success');">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Reset Link</button>
+          <p class="text-center mt-2"><a href="#" onclick="document.getElementById('forgotForm').classList.add('hidden');document.getElementById('loginForm').classList.remove('hidden');return false;">← Back to Login</a></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  function switchAuthTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-tab')[tab === 'login' ? 0 : 1].classList.add('active');
+    document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+    document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+    document.getElementById('forgotForm').classList.add('hidden');
+  }
+</script>
+</body>
+</html>

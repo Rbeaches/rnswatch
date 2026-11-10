@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Repair - R&S Watch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#C9A34E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="R&S Watch">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo"><div class="logo-circle">R&S</div><span>Watch Restoration & Repair</span></a>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="search.html">Content</a></li>
+      <li><a href="repair.html">Repair</a></li>
+      <li><a href="track.html" class="active">Track</a></li>
+      <li><a href="contact.html">About</a></li>
+      <li><a href="login.html" id="nav-login">Login</a></li>
+      <li><a href="account.html" id="nav-logout" style="display:none;">My Account</a></li>
+    </ul>
+    <div class="header-icons">
+      <a href="search.html" style="color:white;">🔍</a>
+      <a href="account.html" style="color:white;">👤</a>
+      <a href="cart.html" class="cart-icon" style="color:white;">🛒<span class="cart-badge" style="display:none;">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container" style="max-width:800px;">
+    <h2 class="text-center">Track Your Repair</h2>
+    <p class="section-sub text-center">Enter your ticket number to view the progress.</p>
+
+    <div class="card mt-4">
+      <form onsubmit="trackRepair(event)" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <input type="text" id="ticketInput" class="form-control" placeholder="Enter Ticket Number (e.g., RS-RT-2045)" style="flex:1;min-width:200px;">
+        <button type="submit" class="btn btn-primary">Track</button>
+      </form>
+      <p style="font-size:13px;color:var(--medium-gray);margin-top:12px;">💡 No ticket yet? <a href="repair.html">Book a repair first</a>.</p>
+    </div>
+
+    <div class="hidden mt-4" id="trackResults">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <p style="font-size:13px;color:var(--medium-gray);">TICKET NUMBER</p>
+            <h3 id="trackTicketNum" style="color:var(--gold);">—</h3>
+          </div>
+          <span class="badge badge-gold" id="trackStatusBadge">● —</span>
+        </div>
+        <div class="mt-4">
+          <p style="font-size:14px;"><strong>Watch:</strong> <span id="trackWatch">—</span></p>
+          <p style="font-size:14px;"><strong>Service:</strong> <span id="trackService">—</span></p>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="trackProgress" style="width:0%;"></div></div>
+        <p style="font-size:13px;color:var(--medium-gray);" id="trackProgressText">—</p>
+        <div class="timeline" id="trackTimeline"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>R&S Watch</h4><p style="font-size:14px;">Precision restoration since 1995.</p></div>
+      <div><h4>Quick Links</h4><ul><li><a href="shop.html">Shop</a></li><li><a href="repair.html">Repair</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="repair.html">Watch Repair</a></li><li><a href="shop.html">Parts & Straps</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>📍 Zone l San Juan Street, Dasmarinas Cavite City</li><li>📞 +63 912 345 6789</li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 R&S Watch. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const STATUS_STEPS = [
+    { key: 'Received',       label: 'Received & Logged' },
+    { key: 'Diagnosed',      label: 'Diagnosis Complete' },
+    { key: 'Awaiting Parts', label: 'Awaiting Parts' },
+    { key: 'In Progress',    label: 'Repair In Progress' },
+    { key: 'QC',             label: 'Quality Check' },
+    { key: 'Ready',          label: 'Ready for Pickup' }
+  ];
+
+  function renderTrackedRepair(repair) {
+    document.getElementById('trackTicketNum').textContent = repair.ticket;
+    document.getElementById('trackWatch').textContent = `${repair.brand} ${repair.model}`;
+    document.getElementById('trackService').textContent = repair.issue;
+    document.getElementById('trackStatusBadge').textContent = '● ' + repair.status;
+
+    const idx = STATUS_STEPS.findIndex(s => s.key === repair.status);
+    const safeIdx = idx === -1 ? 0 : idx;
+    const pct = Math.round(((safeIdx + 1) / STATUS_STEPS.length) * 100);
+    document.getElementById('trackProgress').style.width = pct + '%';
+    document.getElementById('trackProgressText').textContent =
+      `${pct}% complete — Submitted ${repair.date}`;
+
+    document.getElementById('trackTimeline').innerHTML = STATUS_STEPS.map((step, i) => {
+      let cls = '';
+      let dateLine = 'Pending';
+      if (i < safeIdx) { cls = 'done'; dateLine = '✓ Completed'; }
+      else if (i === safeIdx) { cls = 'current'; dateLine = '● Currently here'; }
+      return `<div class="timeline-item ${cls}">
+        <div class="timeline-title">${step.label}</div>
+        <div class="timeline-date">${dateLine}</div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('trackResults').classList.remove('hidden');
+  }
+
+  function trackRepair(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('ticketInput');
+    const ticket = (input.value || '').trim().toUpperCase();
+    if (!ticket) return showToast('Please enter a ticket number.', 'error');
+    if (!/^RS-RT-\d{4}$/.test(ticket)) {
+      return showToast('Invalid format. Use RS-RT-XXXX (e.g., RS-RT-2045).', 'error');
+    }
+
+    const repairs = JSON.parse(localStorage.getItem('rnswatch_repairs') || '[]');
+    const found = repairs.find(r => (r.ticket || '').toUpperCase() === ticket);
+    if (!found) {
+      document.getElementById('trackResults').classList.add('hidden');
+      return showToast('Ticket not found. Please check your number.', 'error');
+    }
+    renderTrackedRepair(found);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('ticket');
+    if (t) {
+      document.getElementById('ticketInput').value = t;
+      trackRepair();
+    }
+  });
+</script>
+</body>
+</html>
