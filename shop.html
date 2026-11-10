@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - R&S Watch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo"><div class="logo-circle">R&S</div><span>Watch Restoration & Repair</span></a>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="search.html">Content</a></li>
+      <li><a href="repair.html">Repair</a></li>
+      <li><a href="track.html">Track</a></li>
+      <li><a href="contact.html">About</a></li>
+      <li><a href="login.html" id="nav-login">Login</a></li>
+      <li><a href="account.html" id="nav-logout" style="display:none;">My Account</a></li>
+    </ul>
+    <div class="header-icons">
+      <a href="search.html" style="color:white;">🔍</a>
+      <a href="account.html" style="color:white;">👤</a>
+      <a href="cart.html" class="cart-icon" style="color:white;">🛒<span class="cart-badge" style="display:none;">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Shop Parts & Accessories</h2>
+    <p class="section-sub">Genuine components for your timepiece</p>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <circle cx="50" cy="50" r="32" fill="#1A1A1A" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="30" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="65" y2="55" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="3" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Generic</div>
+          <div class="product-name">Leather Strap 20mm</div>
+          <div class="product-price">$45.00</div>
+<div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>24</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s1','Leather Strap 20mm',45)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="42" y="10" width="16" height="80" fill="#1A1A1A" />
+            <circle cx="50" cy="50" r="32" fill="#1A1A1A" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="32" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="60" y2="50" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="3" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">OEM</div>
+          <div class="product-name">Watch Crystal</div>
+          <div class="product-price">$120.00</div>
+          <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#FFF8E1; color:#B8860B;">● Low Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>3</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s2','Watch Crystal',120)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="30" y="10" width="40" height="80" rx="4" fill="#1A1A1A" stroke="#C9A34E" stroke-width="1"/>
+            <circle cx="50" cy="50" r="24" fill="#0D0D0D" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="34" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="62" y2="56" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="2" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Seiko</div>
+          <div class="product-name">Crown Assembly</div>
+          <div class="product-price">$85.00</div>
+         <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>12</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s3','Crown Assembly',85)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="30" y="10" width="40" height="80" rx="8" fill="#1A1A1A" stroke="#C9A34E" stroke-width="2"/>
+            <rect x="36" y="30" width="28" height="20" rx="2" fill="#0D0D0D" stroke="#C9A34E" stroke-width="1"/>
+            <circle cx="50" cy="65" r="8" fill="none" stroke="#C9A34E" stroke-width="1.5"/>
+            <line x1="50" y1="65" x2="50" y2="60" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Rolex</div>
+          <div class="product-name">Bezel Insert</div>
+          <div class="product-price">$320.00</div>
+         <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#FFEBEE; color:#C62828;">● Out of Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>0</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" disabled style="opacity:0.5; cursor:not-allowed;">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <circle cx="50" cy="50" r="32" fill="#1A1A1A" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="30" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="65" y2="55" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="3" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Generic</div>
+          <div class="product-name">Spring Bar Set</div>
+          <div class="product-price">$15.00</div>
+         <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>50</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s4','Spring Bar Set',15)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="42" y="10" width="16" height="80" fill="#1A1A1A" />
+            <circle cx="50" cy="50" r="32" fill="#1A1A1A" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="32" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="60" y2="50" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="3" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Generic</div>
+          <div class="product-name">Rubber Strap 22mm</div>
+          <div class="product-price">$35.00</div>
+         <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>18</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s5','Rubber Strap 22mm',35)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="30" y="10" width="40" height="80" rx="4" fill="#1A1A1A" stroke="#C9A34E" stroke-width="1"/>
+            <circle cx="50" cy="50" r="24" fill="#0D0D0D" stroke="#C9A34E" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="34" stroke="#C9A34E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="62" y2="56" stroke="#C9A34E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="2" fill="#C9A34E"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Seiko</div>
+          <div class="product-name">Movement NH35</div>
+          <div class="product-price">$180.00</div>
+          <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>7</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s6','Movement NH35',180)">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;">
+            <rect x="20" y="55" width="60" height="10" rx="2" fill="#1A1A1A" stroke="#C9A34E" stroke-width="1.5"/>
+            <rect x="25" y="60" width="50" height="4" fill="#0D0D0D"/>
+            <circle cx="50" cy="60" r="6" fill="#0D0D0D" stroke="#C9A34E" stroke-width="1.5"/>
+            <circle cx="50" cy="60" r="2" fill="#C9A34E"/>
+            <path d="M30 55 L30 40 L34 35 L38 40 L38 55 Z" fill="#0D0D0D" stroke="#C9A34E" stroke-width="1"/>
+            <path d="M62 55 L62 40 L66 35 L70 40 L70 55 Z" fill="#0D0D0D" stroke="#C9A34E" stroke-width="1"/>
+            <rect x="35" y="70" width="30" height="8" rx="1" fill="#0D0D0D" stroke="#C9A34E" stroke-width="1"/>
+            <line x1="40" y1="74" x2="60" y2="74" stroke="#C9A34E" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Generic</div>
+          <div class="product-name">Watch Tool Kit</div>
+          <div class="product-price">$75.00</div>
+          <div class="mb-4" style="display:flex;align-items:center;gap:8px;font-size:13px;">
+  <span class="badge" style="background:#E8F5E9; color:#2E7D32;">● In Stock</span>
+  <span style="color:var(--medium-gray);">Qty: <strong>9</strong></span>
+</div>
+          <button class="btn btn-primary btn-block" onclick="addToCart('s7','Watch Tool Kit',75)">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>R&S Watch</h4><p style="font-size:14px;">Precision restoration since 1995.</p></div>
+      <div><h4>Quick Links</h4><ul><li><a href="shop.html">Shop</a></li><li><a href="repair.html">Repair</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="repair.html">Watch Repair</a></li><li><a href="shop.html">Parts & Straps</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>📍 Zone l San Juan Street, Dasmarinas Cavite City</li><li>📞 +63 912 345 6789</li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 R&S Watch. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
